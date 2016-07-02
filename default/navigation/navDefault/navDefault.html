@@ -1,0 +1,22 @@
+<div class="row disable-select-text">
+    <div class="container-fluid">
+        <div ng-repeat="navCat in ctrl.navCategories">
+            <h4 class="prefix-title"
+                ng-class="{'closed': !navCat.isActive}"
+                ng-click="ctrl.toggleActive(navCat)">
+                {{navCat.name}}
+                <span class="caret"></span>
+            </h4>
+            <ul class="nav nav-pills nav-stacked cursor-pointer fade"
+                ng-class="{'in': navCat.isActive}">
+                <li ng-repeat="button in navCat.buttons"
+                    ng-class="{'active': button.isActive}"
+                    ng-click="button.callToAction()">
+                    <a ng-href="{{button.href}}">
+                        {{button.text}} {{button.isActive}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
