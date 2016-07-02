@@ -1,7 +1,7 @@
 import {
 	DirectiveHelper,
 	AngularModuleHelper
-} from 'msw.core';
+} from 'milenstanev/msw.core';
 
 import NavigationService from './NavigationService.js';
 import navDefaultTpl from './navDefault.html!text';

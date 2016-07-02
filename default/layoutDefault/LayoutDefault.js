@@ -1,7 +1,7 @@
 import {
 	DirectiveHelper,
 	AngularModuleHelper
-} from 'msw.core';
+} from 'milenstanev/msw.core';
 
 /*
  const lessPath = 'app/less/';
