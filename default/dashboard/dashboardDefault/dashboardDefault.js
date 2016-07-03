@@ -3,109 +3,50 @@ import {
 	AngularModuleHelper
 } from 'milenstanev/msw.core';
 
+import dashboardGridDirective from '../components/dashboardGrid/dashboardGrid.js';
+import dashboardWindowContainerDirective from '../components/dashboardWindowContaine/dashboardWindowContainer.js';
+
+import DashboardDefaultCtrl from './DashboardDefaultCtrl.js';
 import './dashboardDefault.css!';
 import defaultDashboardTpl from './defaultDashboard.html!text';
-
-/**
- * Dashboard grid placeholder
- */
-class DashboardGridCtrl {
-	constructor(layoutContentService, $window) {
-		this.$window = $window;
-		this.itemsPerRow = 3;
-		this.layoutService = layoutContentService;
-		this.gridWidgets = [];
-
-		this.init();
-	}
-
-	init() {
-		this.gridWidgets.push(
-			{
-				title: 'Title 1',
-				content: 'Content 1'
-			},
-			{
-				title: 'Title 2',
-				content: 'Content 2'
-			},
-			{
-				title: 'Title 1',
-				content: 'Content 1'
-			},
-			{
-				title: 'Title 2',
-				content: 'Content 2'
-			},
-			{
-				title: 'Title 1',
-				content: 'Content 1'
-			},
-			{
-				title: 'Title 2',
-				content: 'Content 2'
-			},
-			{
-				title: 'Title 1',
-				content: 'Content 1'
-			},
-			{
-				title: 'Title 2',
-				content: 'Content 2'
-			}
-		);
-	}
-}
-DashboardGridCtrl.$inject = ['layoutContentService', '$window'];
-
-/**
- * Dashboard window placeholder
- */
-class DashboardWindowContainerCtrl {
-	constructor() {}
-}
 
 class DashboardDefault extends AngularModuleHelper {
 	constructor(moduleName, moduleDependencies) {
 		super(moduleName, moduleDependencies);
 
-		this.directive(
-			'prefixDashboard',
-			this.constructor.dashboard
-		);
-
-		this.directive(
-			'prefixDashboardGrid',
-			this.constructor.dashboardGrid
-		);
-
-		this.directive(
-			'prefixDashboardWindowContainer',
-			this.constructor.dashboardWindowContainer
-		);
+    /**
+     * Init module
+     */
+    this.constructor.initComponents.call(this);
 	}
 
-	static dashboard() {
-		let directive = new DirectiveHelper(defaultDashboardTpl);
+  static initComponents() {
+    /**
+     * Instantiate main directive
+     */
+    this.directive('prefixDashboard', () => {
+      let thisDirective = new DirectiveHelper();
 
-		return directive;
-	}
+      thisDirective.template = defaultDashboardTpl;
+      thisDirective.controller = DashboardDefaultCtrl;
 
-	static dashboardGrid() {
-		let directive = new DirectiveHelper();
+      return thisDirective;
+    });
 
-		directive.controller = DashboardGridCtrl;
+    /**
+     * Instantiate grid component
+     */
+    this.directive('prefixDashboardGrid', () => {
+      return dashboardGridDirective
+    });
 
-		return directive;
-	}
-
-	static dashboardWindowContainer() {
-		let directive = new DirectiveHelper();
-
-		directive.controller = DashboardWindowContainerCtrl;
-
-		return directive;
-	}
+    /**
+     * Instantiate window container component
+     */
+    this.directive('prefixDashboardWindowContainer', () => {
+      return dashboardWindowContainerDirective;
+    });
+  }
 }
 
 export {DashboardDefault};

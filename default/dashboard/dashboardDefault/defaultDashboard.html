@@ -1,44 +1,21 @@
-<!--<div class="carousel slide">
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="carousel-caption">-->
-                <prefix-dashboard-grid class="row">
-                    <div class="container-fluid">
-                        <div ng-view class="col-xs-12"></div>
-                    </div>
-                    <div class="container-fluid">
+<div class="carousel slide">
+    <div class="carousel-inner">
+        <div class="item"
+             ng-class="{'active': dashboard.isActive, 'next': dashboard.next, 'prev': dashboard.prev}"
+             ng-repeat="dashboard in ctrl.dashboards">
 
-                        <!--<div class="content-wrapper col-sm-12 col-md-8 col-lg-6" style="height: {{(ctrl.layoutService.height - 30)/ctrl.itemsPerRow}}px">
-                            <div class="content">
-                                Other Title
-                            </div>
-                        </div>
-                        <div class="content-wrapper col-sm-12 col-md-4 col-lg-6" style="height: {{(ctrl.layoutService.height - 30)/ctrl.itemsPerRow}}px">
-                            <div class="content">
-                                Other Title
-                            </div>
-                        </div>-->
+            <!--<div ng-if="dashboard.isActive">-->
 
-                        <div ng-repeat="widget in ctrl.gridWidgets"
-                            class="content-wrapper col-sm-6 col-md-4 col-lg-3"
-                            style="height: {{(ctrl.layoutService.height - 30)/ctrl.itemsPerRow}}px">
+            <div style="display: none;"> {{ isActive = true }} </div>
+            <ng-view ng-if="isActive" class="col-xs-12"></ng-view>
+            {{$index}}
 
-                            <div class="content">
-                                <h5>{{widget.title}}</h5>
-                            </div>
+            <prefix-dashboard-grid class="row"></prefix-dashboard-grid>
 
-                        </div>
-                    </div>
-                </prefix-dashboard-grid>
-                <prefix-dashboard-window-container>
-                    <!-- -->
-                </prefix-dashboard-window-container>
-            <!--</div>
-        </div>
-        <div class="item">
-            <div class="carousel-caption">
-                Content
-            </div>
+            <prefix-dashboard-window-container></prefix-dashboard-window-container>
+
+            <!--</div>-->
+
         </div>
     </div>
-</div>-->
+</div>

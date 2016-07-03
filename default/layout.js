@@ -2,7 +2,7 @@ import {NavBottomDefault as NavBottom} from './navBottom/navBottomDefault/navBot
 import {NavTopDefault as NavTop} from './navTop/navTopDefault/navTopDefault.js';
 import {NavDefault as Navigation} from './navigation/navDefault/navDefault.js';
 import {LayoutDefault as Layout} from './layoutDefault/LayoutDefault.js';
-import {DashboardDefault as Dashboard} from './dashboard/dashboardDefault/dashboardDefault.js';
+import Dashboard from './dashboard/dashboard.js';
 
 new NavTop('prefix.navTop', []);
 new NavBottom('prefix.navBottom', []);
