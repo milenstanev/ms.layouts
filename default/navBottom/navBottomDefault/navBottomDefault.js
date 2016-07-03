@@ -3,16 +3,20 @@ import {
 	AngularModuleHelper
 } from 'milenstanev/msw.core';
 
-
+import './navBottomDefault.css!';
 import navBottomTpl from './navBottomDefault.html!text';
 
 class NavBottomCtrl {
-	constructor() {
-		this.navList = [
-			'item1', 'item2', 'item3'
-		];
+	constructor(dashboardService) {
+		this.dashboardService = dashboardService;
+		this.dashboards = dashboardService.getDashboards();
+	}
+
+	addNewDashboard() {
+		this.dashboardService.add(`Dashboard ${this.dashboards.length + 1}`, true);
 	}
 }
+NavBottomCtrl.$inject = ['dashboardService'];
 
 class NavBottomDefault extends AngularModuleHelper {
 	constructor(moduleName, moduleDependencies) {

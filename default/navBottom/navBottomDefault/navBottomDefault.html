@@ -2,14 +2,16 @@
     <div class="container-fluid">
         <ul class="nav-pills pull-right" style="font-size: 1.5em; list-style: none; padding-top: 0.3em">
             <li class="cursor-pointer"
-                ng-repeat="items in ctrl.navList">
+                ng-repeat="items in ctrl.dashboards"
+                ng-click="items.show(ctrl.dashboards)"
+                ng-class="{'active-dashboard-btn': items.isActive}">
                 <a>
-                    <span class="glyphicon glyphicon-open-file"
-                        ng-class="{'glyphicon-open-file': items.isActive}"></span>
+                    <span class="glyphicon glyphicon-open-file"></span>
                 </a>
             </li>
             <li>&nbsp;</li>
-            <li class="cursor-pointer">
+            <li class="cursor-pointer"
+                ng-click="ctrl.addNewDashboard()">
                 <a>
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>

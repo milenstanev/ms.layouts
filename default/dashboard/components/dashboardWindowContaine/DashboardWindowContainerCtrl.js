@@ -2,7 +2,10 @@
  * Dashboard window placeholder
  */
 class DashboardWindowContainerCtrl {
-  constructor() {}
+  constructor($scope) {
+    this.windowContainer = $scope.widgetsProvider.widgetPlaceholders.windowContainer;
+  }
 }
+DashboardWindowContainerCtrl.$inject = ['$scope'];
 
 export default DashboardWindowContainerCtrl;

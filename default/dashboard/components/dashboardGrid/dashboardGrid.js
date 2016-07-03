@@ -8,7 +8,13 @@ import directiveTpl from './dashboardGrid.html!text';
 
 let dashboardGridDirective = new DirectiveHelper();
 
+dashboardGridDirective.scope = {
+	widgetsProvider: '='
+};
 dashboardGridDirective.controller = DashboardGridCtrl;
+//dashboardGridDirective.template = directiveTpl;
+
 dashboardGridDirective.template = directiveTpl;
+
 
 export default dashboardGridDirective;

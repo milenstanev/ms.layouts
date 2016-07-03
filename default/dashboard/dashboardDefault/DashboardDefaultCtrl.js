@@ -4,6 +4,30 @@ class DashboardViewDataModel {
     this.isActive = false;
     this.prev = false;
     this.next = true;
+    
+    this.widgets = [];
+    this.widgetPlaceholders = {
+      gridContainer: [
+        {
+          name: 'The Name 1',
+          content: 'Content 1'
+        },
+        {
+          name: 'The Name 2',
+          content: 'Content 2 <test-directive></test-directive>'
+        }
+      ],
+      windowContainer: [
+        {
+          name: 'The Name 1',
+          content: 'Content 1'
+        },
+        {
+          name: 'The Name 2',
+          content: 'Content 2'
+        }
+      ]
+    };
   }
 
   show(dashboards) {
@@ -32,7 +56,7 @@ class DashboardViewDataModel {
   }
 }
 
-class DashboardDefaultCtrl {
+class DashboardService {
   constructor($timeout) {
     this.$timeout = $timeout;
     this.dashboards = [];
@@ -47,20 +71,28 @@ class DashboardDefaultCtrl {
     this.add('Dahsboard 4');
 
 
-    this.$timeout((self) => {
+    /*this.$timeout((self) => {
       self.dashboards[3].show(this.dashboards);
     }, 3000, true, this);
 
 
     this.$timeout((self) => {
       self.dashboards[0].show(this.dashboards);
-    }, 6000, true, this);
+    }, 6000, true, this);*/
+  }
+
+  getDashboards() {
+    return this.dashboards;
   }
 
   show(name) {
     let dashboard = this.constructor.getDashboard.call(this, name);
 
-    dashboard.show(this.dashboards);
+    if(dashboard) {
+      dashboard.show(this.dashboards);
+    } else {
+      throw new Error(`Dashboard with name:${name} don't exist!`);
+    }
   }
 
   add(name, showIt) {
@@ -93,6 +125,13 @@ class DashboardDefaultCtrl {
     return false;
   }
 }
-DashboardDefaultCtrl.$inject = ['$timeout'];
+DashboardService.$inject = ['$timeout'];
 
-export default DashboardDefaultCtrl;
+class DashboardDefaultCtrl {
+  constructor(dashboardService) {
+    this.dashboards = dashboardService.getDashboards();
+  }
+}
+DashboardDefaultCtrl.$inject = ['dashboardService'];
+
+export { DashboardService, DashboardDefaultCtrl };

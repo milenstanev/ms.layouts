@@ -6,13 +6,16 @@ import {
 import dashboardGridDirective from '../components/dashboardGrid/dashboardGrid.js';
 import dashboardWindowContainerDirective from '../components/dashboardWindowContaine/dashboardWindowContainer.js';
 
-import DashboardDefaultCtrl from './DashboardDefaultCtrl.js';
+import {DashboardService} from './DashboardDefaultCtrl.js';
+import {DashboardDefaultCtrl} from './DashboardDefaultCtrl.js';
 import './dashboardDefault.css!';
 import defaultDashboardTpl from './defaultDashboard.html!text';
 
 class DashboardDefault extends AngularModuleHelper {
 	constructor(moduleName, moduleDependencies) {
 		super(moduleName, moduleDependencies);
+
+		this.service('dashboardService', DashboardService);
 
     /**
      * Init module

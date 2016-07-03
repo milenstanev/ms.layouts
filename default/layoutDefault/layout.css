@@ -58,3 +58,6 @@ prefix-navigation .nav-pills.in {
 prefix-navigation .nav-pills > li > a {
   border-radius: 2px;
 }
+prefix-content {
+  padding: 0 7.5px !important;
+}

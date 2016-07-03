@@ -4,15 +4,23 @@
              ng-class="{'active': dashboard.isActive, 'next': dashboard.next, 'prev': dashboard.prev}"
              ng-repeat="dashboard in ctrl.dashboards">
 
+            <h3>{{dashboard.title}}</h3>
+            <p>Content</p>
+
+
             <!--<div ng-if="dashboard.isActive">-->
 
-            <div style="display: none;"> {{ isActive = true }} </div>
-            <ng-view ng-if="isActive" class="col-xs-12"></ng-view>
-            {{$index}}
+            <!--<div style="display: none;"> {{ isActive = true }} </div>
+            <ng-view class="col-xs-12"></ng-view>-->
 
-            <prefix-dashboard-grid class="row"></prefix-dashboard-grid>
+            <prefix-dashboard-grid
+                class="row"
+                widgets-provider="dashboard">
+            </prefix-dashboard-grid>
 
-            <prefix-dashboard-window-container></prefix-dashboard-window-container>
+            <prefix-dashboard-window-container
+                widgets-provider="dashboard">
+            </prefix-dashboard-window-container>
 
             <!--</div>-->
 
