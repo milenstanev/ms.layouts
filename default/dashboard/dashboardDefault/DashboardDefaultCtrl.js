@@ -56,6 +56,10 @@ class DashboardViewDataModel {
   }
 }
 
+function asd() {
+  console.log('asd');
+}
+
 class DashboardService {
   constructor($timeout) {
     this.$timeout = $timeout;

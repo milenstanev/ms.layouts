@@ -16,6 +16,7 @@ class DashboardDefault extends AngularModuleHelper {
 		super(moduleName, moduleDependencies);
 
 		this.service('dashboardService', DashboardService);
+		this.controller('DashboardCtrl', DashboardDefaultCtrl);
 
     /**
      * Init module
@@ -25,18 +26,20 @@ class DashboardDefault extends AngularModuleHelper {
 
   static initComponents() {
     /**
+		 * Dashboard
      * Instantiate main directive
      */
     this.directive('prefixDashboard', () => {
       let thisDirective = new DirectiveHelper();
 
       thisDirective.template = defaultDashboardTpl;
-      thisDirective.controller = DashboardDefaultCtrl;
+      thisDirective.controller = 'DashboardCtrl';
 
       return thisDirective;
     });
 
     /**
+		 * Dashboard Grid
      * Instantiate grid component
      */
     this.directive('prefixDashboardGrid', () => {
@@ -44,6 +47,7 @@ class DashboardDefault extends AngularModuleHelper {
     });
 
     /**
+		 * Dashboard Window Container
      * Instantiate window container component
      */
     this.directive('prefixDashboardWindowContainer', () => {
@@ -51,5 +55,14 @@ class DashboardDefault extends AngularModuleHelper {
     });
   }
 }
+/**
+ * Description
+ * @type {{asd: string}}
+ */
+let asd = {
+	asd: 'asd'
+}
+
+asd.asd = 'asd';
 
 export {DashboardDefault};
