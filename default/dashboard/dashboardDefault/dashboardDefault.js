@@ -1,6 +1,7 @@
 import {
 	DirectiveHelper,
-	AngularModuleHelper
+	AngularModuleHelper,
+	mswCoreDirectives
 } from 'milenstanev/msw.core';
 
 import dashboardGridDirective from '../components/dashboardGrid/dashboardGrid.js';
@@ -11,8 +12,11 @@ import {DashboardDefaultCtrl} from './DashboardDefaultCtrl.js';
 import './dashboardDefault.css!';
 import defaultDashboardTpl from './defaultDashboard.html!text';
 
+//const widgetPlaceholders = new WidgetPlaceholdersDefault('prefix.dashboard.placeholders', []);
+
 class DashboardDefault extends AngularModuleHelper {
 	constructor(moduleName, moduleDependencies) {
+		//moduleDependencies.push(widgetPlaceholders.name);
 		super(moduleName, moduleDependencies);
 
 		this.service('dashboardService', DashboardService);

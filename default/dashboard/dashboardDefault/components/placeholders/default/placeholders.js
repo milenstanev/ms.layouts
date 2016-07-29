@@ -5,20 +5,20 @@ import {
 
 class WidgetPlaceholdersDataModel {
 	constructor() {
-		this.name = 'The Name 1';
-		this.content =  'Content 1';
+		this.name = '';
+		this.content =  ''; //probably will be directive
 
 	}
 }
 
-class WidgetGridDataModel extends WidgetBasicDataModel {
+class WidgetGridDataModel extends WidgetPlaceholdersDataModel {
 	constructor() {
 		super();
-		this.widgetType = 'grid';
+		this.type = 'grid';
 	}
 }
 
-class WidgetWindowDataModel extends WidgetBasicDataModel {
+class WidgetWindowDataModel extends WidgetPlaceholdersDataModel {
 	constructor() {
 		super();
 		this.type = 'window';
@@ -27,13 +27,27 @@ class WidgetWindowDataModel extends WidgetBasicDataModel {
 
 class WidgetPlaceholdersService {
 	constructor() {
+
+		this.allowedTypes = {
+			grid: WidgetGridDataModel,
+			window: WidgetWindowDataModel
+		};
+
 		this.widgets = [];
 	}
 
-	add() {
-		let newWidget = new WidgetsDataModel();
+	add(type, name, content) {
+		let newWidget;
 
-		this.widgets.push(newWidget);
+		if(this.allowedTypes.hasOwnProperty(type)) {
+			newWidget = new this.allowedTypes[type]();
+
+			newWidget.name = name;
+			newWidget.content = content;
+			this.widgets.push(newWidget);
+		} else {
+			throw new Error('placeholdersDataModels dosen\'t contain such type');
+		}
 	}
 
 	remove(name) {
@@ -47,10 +61,5 @@ class WidgetPlaceholdersService {
 	}
 }
 
-class WidgetPlaceholdersDefault extends AngularModuleHelper {
-	constructor() {
-		super();
 
-		this.service('widgetsService', WidgetsService);
-	}
-}
+export default WidgetPlaceholdersService;

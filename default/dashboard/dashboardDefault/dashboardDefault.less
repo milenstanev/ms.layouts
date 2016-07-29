@@ -1,25 +1,47 @@
 prefix-dashboard {
-  .item {
-    /*top: 0;
-    position: absolute;*/
-    background: white;
+  height: 100%;
+
+  > div,
+  > div > div,
+  prefix-dashboard-item {
+    height: 100%;
+  }
+
+  prefix-dashboard-item {
+    display: block;
+    //background: white;
+    position: relative;
+    overflow-y: auto;
   }
 }
 
 prefix-dashboard-grid {
   display: block;
 
+  > div {
+    padding-bottom: 15px;
+  }
+
   .content-wrapper {
     position: relative;
-    padding-top: 30px;
+    //padding-top: 30px;
+    padding: 15px 7.5px 0 7.5px;
   }
 
   .content {
+    position: relative;
+    overflow-y: auto;
     height: 100%;
     border-radius: 3px;
     padding: 10px;
-    background: #fafafa;
-    border: 1px solid #e7e7e7;
+
+    //background: #fafafa;
+
+    &:hover {
+      //background: #fafafa;
+      border: 1px dashed #383838;
+      margin: -1px;
+    }
   }
 }
 
@@ -30,4 +52,9 @@ prefix-dashboard-window-container {
   background: gray;
   left: 0;
   top: 0;
+
+  .modal-dialog {
+    position: fixed;
+    top: 200px;
+  }
 }

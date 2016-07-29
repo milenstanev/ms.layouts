@@ -3,7 +3,7 @@
  */
 class DashboardWindowContainerCtrl {
   constructor($scope) {
-    this.windowContainer = $scope.widgetsProvider.widgetPlaceholders.windowContainer;
+    this.gridWidgets = $scope.widgetsProvider;
   }
 }
 DashboardWindowContainerCtrl.$inject = ['$scope'];

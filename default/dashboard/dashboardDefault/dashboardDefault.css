@@ -1,21 +1,36 @@
-prefix-dashboard .item {
-  /*top: 0;
-    position: absolute;*/
-  background: white;
+prefix-dashboard {
+  height: 100%;
+}
+prefix-dashboard > div,
+prefix-dashboard > div > div,
+prefix-dashboard prefix-dashboard-item {
+  height: 100%;
+}
+prefix-dashboard prefix-dashboard-item {
+  display: block;
+  position: relative;
+  overflow-y: auto;
 }
 prefix-dashboard-grid {
   display: block;
 }
+prefix-dashboard-grid > div {
+  padding-bottom: 15px;
+}
 prefix-dashboard-grid .content-wrapper {
   position: relative;
-  padding-top: 30px;
+  padding: 15px 7.5px 0 7.5px;
 }
 prefix-dashboard-grid .content {
+  position: relative;
+  overflow-y: auto;
   height: 100%;
   border-radius: 3px;
   padding: 10px;
-  background: #fafafa;
-  border: 1px solid #e7e7e7;
+}
+prefix-dashboard-grid .content:hover {
+  border: 1px dashed #383838;
+  margin: -1px;
 }
 prefix-dashboard-window-container {
   position: absolute;
@@ -24,4 +39,8 @@ prefix-dashboard-window-container {
   background: gray;
   left: 0;
   top: 0;
+}
+prefix-dashboard-window-container .modal-dialog {
+  position: fixed;
+  top: 200px;
 }

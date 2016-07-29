@@ -1,6 +1,7 @@
 <div class="carousel slide">
     <div class="carousel-inner">
-        <div class="item"
+        {{ctrl.activeDashboard}}
+        <prefix-dashboard-item class="item"
              ng-class="{'active': dashboard.isActive, 'next': dashboard.next, 'prev': dashboard.prev}"
              ng-repeat="dashboard in ctrl.dashboards">
 
@@ -13,19 +14,19 @@
             <!--<div style="display: none;"> {{ isActive = true }} </div>
             <ng-view class="col-xs-12"></ng-view>-->
 
-            <ng-view class="col-xs-12" ng-if="dashboard.isActive"></ng-view>
+            <!--<ng-view class="col-xs-12" ng-if="dashboard.isActive"></ng-view>-->
 
             <prefix-dashboard-grid
                 class="row"
-                widgets-provider="dashboard">
+                widgets-provider="dashboard.widgets">
             </prefix-dashboard-grid>
 
             <prefix-dashboard-window-container
-                widgets-provider="dashboard">
+                widgets-provider="dashboard.widgets">
             </prefix-dashboard-window-container>
 
             <!--</div>-->
 
-        </div>
+        </prefix-dashboard-item>
     </div>
 </div>

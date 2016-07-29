@@ -12,7 +12,6 @@ dashboardGridDirective.scope = {
 	widgetsProvider: '='
 };
 dashboardGridDirective.controller = DashboardGridCtrl;
-//dashboardGridDirective.template = directiveTpl;
 
 dashboardGridDirective.template = directiveTpl;
 

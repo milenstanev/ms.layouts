@@ -1,0 +1,5 @@
+Dashboards:
+
+  Default:
+    App will fill "widgetPlaceholders" via click on "navigation" with widgets|components :| register in an service
+

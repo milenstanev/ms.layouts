@@ -1,0 +1,18 @@
+<div class="modal-dialog container-box ui-resizable"
+     ng-repeat="widget in ctrl.gridWidgets"
+     ng-if="widget.type === 'window'">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 ng-if="widget.name">
+        {{widget.name}}
+      </h5>
+    </div>
+    <div class="modal-body">
+      <msw-widget-placeholder
+          directive-name="widget.content">
+        <!-- The directive provided from dashboard -->
+      </msw-widget-placeholder>
+    </div>
+    <div class="modal-footer"></div>
+  </div>
+</div>

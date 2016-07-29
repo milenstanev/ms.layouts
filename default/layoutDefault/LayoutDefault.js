@@ -94,6 +94,7 @@ class LayoutDefault extends AngularModuleHelper {
 
     directive.link = (scope, element, attrs, ctrl) => {
       ctrl.domEl = element[0];
+
       ctrl.layoutChange();
     };
 

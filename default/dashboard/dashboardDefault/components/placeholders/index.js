@@ -1,1 +1,1 @@
-export {layout as default} from "./default/layout.js";
+export {WidgetPlaceholdersDefault as default} from "./default/placeholders.js";
